@@ -3,7 +3,7 @@
 ## Overview
 
 **AlkoReviewScraper** provides two web scrapers that collect cummunity rating data for rums and whiskeys from two different websites websites: [The Rum Howler Blog](https://therumhowlerblog.com/rum-reviews/), [WhiskyScores.com](https://whiskyscores.com)
-These two webscrapers were created for gathering review data to use in one of my other projects: -- link to AlkoApp --
+These two webscrapers were created for gathering review data to use in one of my other projects: [ Alko_App ](https://github.com/oskuuh43/alko_app/tree/main) - an application that helps users make better spirit purchases based on product ratings and price.
 
 ##  How To run
 
