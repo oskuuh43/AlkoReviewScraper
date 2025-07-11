@@ -9,18 +9,20 @@ import time     # For adding delays
 OUTPUT_FILE = os.path.join("data", "whiskey_scores_data.xlsx")
 os.makedirs("data", exist_ok=True)
 
-# List of whisky base URLs (/xxxx)
+# List of whisky base URLs (/____)
 COUNTRIES = [
     "scotland", "ireland", "japan", "usa", "canada", "australia",
     "india", "england", "france", "germany", "sweden", "world"
 ]
 
-BASE_URL = "https://whiskyscores.com/whisky"    # base target url
-HEADERS = {"User-Agent": "Mozilla/5.0"}         # user agent to mimic a browser (avoid bot blocks)
+BASE_URL = "https://whiskyscores.com/whisky"    # base url
+HEADERS = {"User-Agent": "Mozilla/5.0"}         # user agent to avoid bot blocks
 
 def extract_score_data(score_text: str):
-    """Extract average score and review count from text like:
-    'Average Score (88) · Highest Score (92) · Lowest Score (83) · # of Times Scored (4)'"""
+    """
+    Extract average score and review count from text like:
+    'Average Score (88) x Highest Score (92) x Lowest Score (83) x # of Times Scored (4)'
+    """
     avg_match = re.search(r"Average Score \((\d+)\)", score_text)
     count_match = re.search(r"Times Scored \((\d+)\)", score_text)
     try:
@@ -32,7 +34,7 @@ def extract_score_data(score_text: str):
 
 def fetch_all_whiskey_scores(max_pages_per_country=10000, delay=0.5):
     """
-Loops through each country and paginated whiskey listings, extracting scores.
+Loops through each country url and page, extracting scores.
     """
     results = []
     for country in COUNTRIES:
